@@ -4,7 +4,15 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    ElAside: typeof import('element-plus/es')['ElAside']
     ElCard: typeof import('element-plus/es')['ElCard']
+    ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElDescriptions: typeof import('element-plus/es')['ElDescriptions']
+    ElDescriptionsItem: typeof import('element-plus/es')['ElDescriptionsItem']
+    ElImage: typeof import('element-plus/es')['ElImage']
+    ElImg: typeof import('element-plus/es')['ElImg']
+    ElMain: typeof import('element-plus/es')['ElMain']
+    ElTag: typeof import('element-plus/es')['ElTag']
     ProductCard: typeof import('./src/components/Card/ProductCard.vue')['default']
     Sample: typeof import('./src/components/sample.vue')['default']
   }

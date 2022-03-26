@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "@types/lodash-es": "^4.17.6",
+    "axios": "^0.26.1",
     "element-plus": "^2.1.5",
     "pinia": "^2.0.12",
+    "sass": "^1.49.9",
     "unplugin-auto-import": "^0.6.6",
     "unplugin-vue-components": "^0.18.4",
     "vue": "^3.2.25",
