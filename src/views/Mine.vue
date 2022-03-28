@@ -11,9 +11,10 @@ import MineCard from "../components/Mine/MineCard.vue";
 </script>
 
 <style lang="scss" scoped>
-.mine{
-    height: 100vh;
-    background-color: #f0f0f0
-    // border: 1px solid;
+.mine {
+  margin-top: 0;
+  height: 100vh;
+  background-color: #f0f0f0;
+  // border: 1px solid;
 }
 </style>

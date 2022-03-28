@@ -9,6 +9,8 @@
 
 <style lang="scss" scoped>
 .join-us {
+  position: relative;
+  top: 20px;
   // border: 1px solid;
   * {
     text-align: center;

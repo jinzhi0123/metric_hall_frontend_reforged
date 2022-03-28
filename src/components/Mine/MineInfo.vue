@@ -18,7 +18,9 @@ const jump = () => {
 
 <style lang="scss" scoped>
 .main-card {
-  margin: 20px auto;
+  position: relative;
+  margin: 0px auto;
+  top: 20px;
   width: 90%;
   & img {
     border-radius: 50%;
