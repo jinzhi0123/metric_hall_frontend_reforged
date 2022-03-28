@@ -4,11 +4,19 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    DataList: typeof import('./src/components/Home/DataList.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElMain: typeof import('element-plus/es')['ElMain']
+    Footer: typeof import('./src/components/Base/Footer.vue')['default']
+    Header: typeof import('./src/components/Home/Header.vue')['default']
+    Info: typeof import('./src/components/Home/Info.vue')['default']
+    MineCard: typeof import('./src/components/Mine/MineCard.vue')['default']
+    MineInfo: typeof import('./src/components/Mine/MineInfo.vue')['default']
     ProductCard: typeof import('./src/components/Card/ProductCard.vue')['default']
+    ProductListView: typeof import('./src/components/Products/ProductListView.vue')['default']
+    ReadingList: typeof import('./src/components/Home/ReadingList.vue')['default']
     Sample: typeof import('./src/components/sample.vue')['default']
   }
 }

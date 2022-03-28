@@ -7,10 +7,19 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("./views/Home.vue"),
   },
   {
+    path: "/products",
+    redirect: "/products/All",
+  },
+  {
     path: "/products/:type",
     name: "Products",
     component: () => import("./views/Products.vue"),
   },
+  {
+    path: "/mine",
+    name: "Mine",
+    component: () => import("./views/Mine.vue"),
+  }
 ];
 
 const router = createRouter({

@@ -19,7 +19,7 @@
 
 <script lang="ts" setup>
 import ProductCard from "../components/Card/ProductCard.vue";
-import { onMounted, ref, watch } from "vue";
+import { onMounted } from "vue";
 import { ProductStore } from "../store/products";
 import { useRoute, useRouter } from "vue-router";
 
