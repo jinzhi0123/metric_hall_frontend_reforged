@@ -1,63 +1,91 @@
 <template>
-  <el-container>
-    <el-aside width="70px">
-      <div class="menu-card fade-in-lf">
-        <div class="option-btn" v-for="(i, v) in classes" :key="i">
-          <router-link style="" :to="i">
-            {{ v }}
-          </router-link>
-        </div>
+  <div class="main">
+    <el-card class="main-card">
+      <img width="50" src="http://img-cdn.dustella.net/avtr.jpg" />
+      <div class="info">
+        <h4>我是用户名</h4>
+        <div>测试中，出报告，订阅过期</div>
       </div>
-    </el-aside>
+    </el-card>
     <el-main>
-      <div v-for="i in listing()">
-        <product-card :product="i"></product-card>
-      </div>
+      <el-tabs
+        v-model="activeName"
+        type="border-card"
+        class="demo-tabs"
+        stretch
+        @tab-click="handleClick"
+      >
+        <el-tab-pane label="全部" name="all"><router-view /></el-tab-pane>
+        <el-tab-pane label="我的结果" name="mine"><router-view /></el-tab-pane>
+      </el-tabs>
     </el-main>
-  </el-container>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import ProductCard from "../components/Card/ProductCard.vue";
-import { onMounted } from "vue";
-import { ProductStore } from "../store/products";
-import { useRoute, useRouter } from "vue-router";
+import { onMounted, ref } from "vue";
+import type { TabsPaneContext } from "element-plus";
+import { useRouter } from "vue-router";
 
-const route = useRoute();
 const router = useRouter();
-const parat = () => {
-  return String(route.params.type);
-};
 
-const typeMapping = ["All", "self", "others"];
+const activeName = ref("all");
 
-const type = (): number => {
-  return typeMapping.indexOf(parat());
-};
-
-router.afterEach(async () => {
-  await all_products.getAll(type());
-});
-
-// setInterval(() => {
-//   console.log(parat());
-// }, 1000);
-const all_products = ProductStore();
-onMounted(async () => {
-  await all_products.getAll(type());
-});
-const listing = () => {
-  return all_products.productLs;
-};
-const classes = {
-  全部: "/products/All",
-  自我: "/products/self",
-  群体: "/products/others",
-  社会: "/products/society",
+const handleClick = (tab: TabsPaneContext, event: Event) => {
+  router.push(tab.paneName == "all" ? "/products/all/All" : "/products/mine");
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.el-main {
+  height: 75vh;
+}
+.demo-tabs {
+  position: relative;
+  top: 25px;
+  // background-color: white;
+  & > .el-tabs__content {
+    padding: 32px;
+    color: #6b778c;
+    font-size: 32px;
+    font-weight: 600;
+  }
+}
+.info {
+  display: inline-block;
+  position: relative;
+  height: 100px;
+  margin-top: 0px;
+  margin-left: 10px;
+  top: 0px;
+  & > h4 {
+    line-height: 4px;
+  }
+  & > div {
+    height: 8px;
+    color: grey;
+    // line-height: ;
+    font-size: 12px;
+  }
+}
+
+:deep(.el-card__body) {
+  padding: 5px 10px;
+}
+
+.main-card {
+  position: relative;
+  margin: 0px auto;
+  top: 20px;
+  width: 90%;
+  height: 85px;
+  & img {
+    border-radius: 50%;
+  }
+  p {
+    color: grey;
+  }
+}
 .menu-card {
   width: 100%;
   background: rgba(255, 255, 255, 0.1);
@@ -96,11 +124,8 @@ const classes = {
   }
 }
 
-.el-container {
+.main {
   background-color: #ededed;
   height: 100vh;
-  & .el-aside {
-    background-color: #fff;
-  }
 }
 </style>

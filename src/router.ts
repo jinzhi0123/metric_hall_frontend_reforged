@@ -7,19 +7,38 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("./views/Home.vue"),
   },
   {
-    path: "/products",
-    redirect: "/products/All",
+    path: "/products/all",
+    redirect: "/products/all/All",
   },
   {
-    path: "/products/:type",
+    path: "/products",
     name: "Products",
+    redirect: "/products/all",
     component: () => import("./views/Products.vue"),
+    children: [
+      {
+        path: "All",
+        redirect: "/products/All/all",
+      },
+      {
+        path: "mine",
+        redirect: "/products/mine/all",
+      },
+      {
+        path: "All/:type",
+        component: () => import("./views/Products/All.vue"),
+      },
+      {
+        path: "mine/:type",
+        component: () => import("./views/Products/Self.vue"),
+      },
+    ],
   },
   {
     path: "/mine",
     name: "Mine",
     component: () => import("./views/Mine.vue"),
-  }
+  },
 ];
 
 const router = createRouter({

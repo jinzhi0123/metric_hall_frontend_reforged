@@ -26,7 +26,7 @@ const pushMine = () => {
   router.push("/mine");
 };
 const pushProducts = () => {
-  router.push("/products");
+  router.push("/products/all");
 };
 </script>
 
