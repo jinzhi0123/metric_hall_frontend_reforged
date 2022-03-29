@@ -28,7 +28,7 @@ const router = useRouter();
 const activeName = ref("/products/all/All");
 
 const handleClick = (tab: TabsPaneContext) => {
-  router.push(tab.paneName);
+  router.push(tab.paneName as string);
 };
 const route = useRoute();
 const parat = () => {
