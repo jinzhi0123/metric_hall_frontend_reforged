@@ -3,7 +3,7 @@
     <el-card class="main-card">
       <img width="50" src="http://img-cdn.dustella.net/avtr.jpg" />
       <div class="info">
-        <h4>我是用户名</h4>
+        <h4>{{ info().name }}</h4>
         <div>测试中，出报告，订阅过期</div>
       </div>
     </el-card>
@@ -26,6 +26,13 @@
 import { onMounted, ref } from "vue";
 import type { TabsPaneContext } from "element-plus";
 import { useRouter } from "vue-router";
+import { userInfo } from "../store/userInfo";
+
+const UserInfo = userInfo();
+
+const info = () => {
+  return UserInfo.userInfo;
+};
 
 const router = useRouter();
 

@@ -19,15 +19,16 @@
 
 <script lang="ts" setup>
 import ProductCard from "../../components/Card/ProductCard.vue";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { ProductStore } from "../../store/products";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter, onBeforeRouteUpdate } from "vue-router";
 import type { TabsPaneContext } from "element-plus";
 
 const router = useRouter();
 const activeName = ref("/products/all/All");
 
 const handleClick = (tab: TabsPaneContext) => {
+  console.log("handleClick");
   router.push(tab.paneName as string);
 };
 const route = useRoute();
@@ -40,10 +41,16 @@ const typeMapping = ["All", "self", "others"];
 const type = (): number => {
   return typeMapping.indexOf(parat());
 };
-
-router.afterEach(async () => {
-  await all_products.getAll(type());
-});
+watch(
+  () => route.path,
+  async () => {
+    console.log("watch");
+  }
+);
+// onBeforeRouteUpdate(async () => {
+//   // console.log("routeChanged");
+//   // await all_products.getAll(type());
+// });
 
 // setInterval(() => {
 //   console.log(parat());
