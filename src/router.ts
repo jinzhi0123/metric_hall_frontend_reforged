@@ -39,6 +39,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "Mine",
     component: () => import("./views/Mine.vue"),
   },
+  {
+    path: "/oauth2",
+    name: "OAuth",
+    component: () => import("./views/Login/Oauth.vue"),
+  },
 ];
 
 const router = createRouter({
