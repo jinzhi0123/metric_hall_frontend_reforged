@@ -1,5 +1,5 @@
 <template>
-  <el-carousel trigger="click" height="450px">
+  <el-carousel trigger="click" height="250px">
     <el-carousel-item
       v-for="item of urls"
       :key="item"
@@ -13,7 +13,8 @@
       <h1>嘿！这里是麦趣咖啡馆</h1>
       <h4>来一杯卡布奇诺吗</h4>
     </el-card>
-    <!-- <div class="todo">继续测评</div> -->
+    <el-empty description="咖啡店正在施工哦" />
+<!--    todo: -->
   </div>
 </template>
 
