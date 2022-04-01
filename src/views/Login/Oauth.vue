@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts" setup>
-import { useRoute, useRouter } from "vue-router";
-import { ref, onMounted } from "vue";
-import { loginState } from "../../store/loginStatus";
-import { userInfo } from "../../store/userInfo";
+import {useRoute, useRouter} from "vue-router";
+import {ref, onMounted} from "vue";
+import {loginState} from "../../store/loginStatus";
+import {userInfo} from "../../store/userInfo";
 
 const isOK = ref(false);
 const debug = ref(false);
@@ -31,3 +31,10 @@ onMounted(async () => {
   }, 1500);
 });
 </script>
+
+<style scoped>
+div {
+  text-align: center;
+  font-size: 16px;
+}
+</style>

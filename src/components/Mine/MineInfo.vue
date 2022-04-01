@@ -1,6 +1,6 @@
 <template>
   <el-card class="main-card">
-    <img width="100" src="http://img-cdn.dustella.net/avtr.jpg" />
+    <img width="100" :src="info().avtr_url" alt="头像"/>
     <el-button @click="jump">编辑</el-button>
     <h4>{{info().name}}</h4>
     <p>麦趣陪伴了你{{ days }}天</p>

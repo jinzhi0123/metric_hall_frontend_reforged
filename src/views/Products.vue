@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <el-card class="main-card">
-      <img width="50" src="http://img-cdn.dustella.net/avtr.jpg" />
+      <img width="50" :src="info().avtr_url" alt="头像">
       <div class="info">
         <h4>{{ info().name }}</h4>
         <div>测试中，出报告，订阅过期</div>
@@ -9,24 +9,28 @@
     </el-card>
     <el-main>
       <el-tabs
-        v-model="activeName"
-        type="border-card"
-        class="demo-tabs"
-        stretch
-        @tab-click="handleClick"
+          v-model="activeName"
+          type="border-card"
+          class="demo-tabs"
+          stretch
+          @tab-click="handleClick"
       >
-        <el-tab-pane label="全部" name="all"><router-view /></el-tab-pane>
-        <el-tab-pane label="我的结果" name="mine"><router-view /></el-tab-pane>
+        <el-tab-pane label="全部" name="all">
+          <router-view/>
+        </el-tab-pane>
+        <el-tab-pane label="我的结果" name="mine">
+          <router-view/>
+        </el-tab-pane>
       </el-tabs>
     </el-main>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
-import type { TabsPaneContext } from "element-plus";
-import { useRouter } from "vue-router";
-import { userInfo } from "../store/userInfo";
+import {onMounted, ref} from "vue";
+import type {TabsPaneContext} from "element-plus";
+import {useRouter} from "vue-router";
+import {userInfo} from "../store/userInfo";
 
 const UserInfo = userInfo();
 
@@ -47,6 +51,7 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
 .el-main {
   height: 75vh;
 }
+
 .demo-tabs {
   position: relative;
   top: 25px;
@@ -58,6 +63,7 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
     font-weight: 600;
   }
 }
+
 .info {
   display: inline-block;
   position: relative;
@@ -65,9 +71,11 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
   margin-top: 0px;
   margin-left: 10px;
   top: 0px;
+
   & > h4 {
     line-height: 4px;
   }
+
   & > div {
     height: 8px;
     color: grey;
@@ -86,13 +94,16 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
   top: 20px;
   width: 90%;
   height: 85px;
+
   & img {
     border-radius: 50%;
   }
+
   p {
     color: grey;
   }
 }
+
 .menu-card {
   width: 100%;
   background: rgba(255, 255, 255, 0.1);
@@ -111,18 +122,22 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
   width: 100%;
   height: 8vh;
   transition: all 0.5s;
+
   :hover {
     width: 100%;
     font-weight: bold;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+
   overflow: visible;
+
   a {
     color: grey;
     font-size: 18px;
     text-decoration: none;
   }
+
   ::before {
     display: inline-block;
     height: 100%;

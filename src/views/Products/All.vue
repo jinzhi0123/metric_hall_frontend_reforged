@@ -47,14 +47,6 @@ watch(
     console.log("watch");
   }
 );
-// onBeforeRouteUpdate(async () => {
-//   // console.log("routeChanged");
-//   // await all_products.getAll(type());
-// });
-
-// setInterval(() => {
-//   console.log(parat());
-// }, 1000);
 const all_products = ProductStore();
 onMounted(async () => {
   await all_products.getAll(type());
