@@ -1,7 +1,7 @@
 <template>
   <el-card class="main-card">
     <img width="100" :src="info().avtr_url" alt="头像"/>
-    <el-button @click="jump">编辑</el-button>
+    <el-button @click="editInfo">编辑</el-button>
     <h4>{{info().name}}</h4>
     <p>麦趣陪伴了你{{ days }}天</p>
   </el-card>
@@ -19,7 +19,7 @@ const info = () => {
   return UserInfo.userInfo;
 };
 
-const jump = () => {
+const editInfo = () => {
   window.open("https://api.maiquer.tech/api/wechat/login");
 };
 </script>

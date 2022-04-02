@@ -14,3 +14,18 @@ declare module "*.vue" {
   const component: DefineComponent<{}, {}, any>;
   export default component;
 }
+
+declare type payd = {
+  timeStamp: string;
+  orderNo: string;
+  paySign: string;
+  appId: string;
+  prepayId: string;
+};
+
+declare module "weixin-js-sdk";
+declare module "qs";
+
+declare class WeixinJSBridge {
+  static invoke: (arg0: string, arg1: any, arg3: (res:any) => void) => {};
+}

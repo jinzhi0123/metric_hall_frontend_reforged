@@ -147,7 +147,8 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
 }
 
 .main {
-  background-color: #ededed;
+  //background-col#ededed;
+  background: linear-gradient(#ededed,#fff);
   height: 100vh;
 }
 </style>

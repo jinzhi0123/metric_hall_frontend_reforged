@@ -16,7 +16,7 @@ export default async function getAllProducts(
       for (const i of response.data.data) {
         const p = new Product(
           i.name,
-          i.Id,
+          i.id,
           i.coverPic,
           i.realUrl,
           i.price * 100

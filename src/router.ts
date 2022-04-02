@@ -44,6 +44,14 @@ const routes: Array<RouteRecordRaw> = [
     name: "OAuth",
     component: () => import("./views/Login/Oauth.vue"),
   },
+  {
+    path: "/editinfo",
+    component: () => import("./views/Mine/EditInfo.vue"),
+  },
+  {
+    path: "/myfav",
+    component: () => import("./views/Mine/MyFavourite.vue"),
+  },
 ];
 
 const router = createRouter({
