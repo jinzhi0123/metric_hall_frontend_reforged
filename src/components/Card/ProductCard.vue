@@ -91,7 +91,7 @@ const opena = async () => {
   }
 }
 
-.descript {
+.description {
   margin-left: 20px;
 
   & > .title {
