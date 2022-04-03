@@ -1,0 +1,26 @@
+import {loginState} from "../../store/loginStatus";
+import qs from "qs";
+import axios from "axios";
+
+const login = loginState()
+
+const addProduct = async (id: number) => {
+    let success = false;
+    await axios({
+        method: "POST",
+        url: `https://api.maiquer.tech/api/user/addMyEva`,
+        headers: {
+            "content-type": "application/x-www-form-urlencoded",
+            Authorization: login.jwtToken,
+        }, data: qs.stringify({userId: login.userid, evaId: id}),
+    }).then(
+        res => {
+            if (res.data.code == 0) {
+                success = true
+            }
+        }
+    )
+    return success
+}
+
+export default addProduct

@@ -1,11 +1,11 @@
 <template>
   <el-card shadow="always" class="product" @click="opena()">
-    <img :src="props.product.backgd_url" />
+    <img :src="props.product.backgd_url"/>
     <div class="descript">
       <p class="title">{{ props.product.name }}</p>
       <p class="more-info">{{ props.product.name }}</p>
-      <p class="price" v-if="!props.product.alreadyHave">价格：¥ {{ props.product.price / 100 }}</p>
-      <p class="have" v-else>已经购买</p>
+      <span class="price" v-if="!props.product.alreadyHave">价格：¥ {{ props.product.price / 100 }}</span>
+      <span class="have" v-else>已经购买</span>
     </div>
   </el-card>
   <div class="tags">
@@ -17,28 +17,42 @@
 
 <script setup lang="ts">
 import buyProduct from "../../apis/products/buyProduct";
+import {loginState} from "../../store/loginStatus";
+import addProduct from "../../apis/products/addProduct";
+
+const login = loginState()
 
 const props = defineProps<{ product: Product }>();
 const opena = async () => {
-  console.log(props.product.index);
-  await buyProduct(String(props.product.index), 55).then((res) => {
+  if (props.product.alreadyHave) {
+    window.open(props.product.target_url)
+  }
+  await buyProduct(String(props.product.index), login.userid).then((res) => {
     WeixinJSBridge.invoke(
-      "getBrandWCPayRequest",
-      {
-        appId: res.appId, //公众号ID，由商户传入
-        timeStamp: res.timeStamp, //时间戳，自1970年以来的秒数
-        nonceStr: res.nonceStr, //随机串
-        package: res.package, //
-        signType: "RSA", //微信签名方式：
-        paySign: res.paySign, //微信签名
-      },
-      function (res: any) {
-        console.log(res);
-        if (res.err_msg == "get_brand_wcpay_request:ok") {
-          // 使用以上方式判断前端返回,微信团队郑重提示：
-          //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+        "getBrandWCPayRequest",
+        {
+          appId: res.appId, //公众号ID，由商户传入
+          timeStamp: res.timeStamp, //时间戳，自1970年以来的秒数
+          nonceStr: res.nonceStr, //随机串
+          package: res.package, //
+          signType: "RSA", //微信签名方式：
+          paySign: res.paySign, //微信签名
+        },
+        async function (res: any) {
+          console.log(res);
+          if (res.err_msg == "get_brand_wcpay_request:ok") {
+            await addProduct(props.product.index).then(
+                res => {
+                  if (res) {
+                    location.reload()
+                  }
+                }
+            )
+
+            // 使用以上方式判断前端返回,微信团队郑重提示：
+            //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+          }
         }
-      }
     );
   });
 };
@@ -61,6 +75,7 @@ const opena = async () => {
   margin: 10px 0px;
   margin-top: 20px;
 }
+
 :deep(.el-card__body) {
   padding: 0 !important;
   width: 100%;
@@ -68,24 +83,29 @@ const opena = async () => {
   display: flex;
   flex-direction: row;
   background: #eceeee;
+
   & img {
     width: 100px !important;
     height: 100%;
     position: relative;
   }
 }
+
 .descript {
   margin-left: 20px;
+
   & > .title {
     font-size: 17px;
     font-weight: bold;
     line-height: 12px;
   }
+
   & > .more-info {
     font-size: 13px;
     color: grey;
     line-height: 6px;
   }
+
   & > .price {
     color: red;
     font-size: 12px;
@@ -94,7 +114,8 @@ const opena = async () => {
     padding: 6px;
     border-radius: 9px;
   }
-    & > .have {
+
+  & > .have {
     color: white;
     font-size: 12px;
     line-height: 8px;
