@@ -4,7 +4,8 @@
     <div class="descript">
       <p class="title">{{ props.product.name }}</p>
       <p class="more-info">{{ props.product.name }}</p>
-      <p class="price">价格：¥ {{ props.product.price / 100 }}</p>
+      <p class="price" v-if="!props.product.alreadyHave">价格：¥ {{ props.product.price / 100 }}</p>
+      <p class="have" v-else>已经购买</p>
     </div>
   </el-card>
   <div class="tags">
@@ -15,7 +16,6 @@
 </template>
 
 <script setup lang="ts">
-import wx from "weixin-js-sdk";
 import buyProduct from "../../apis/products/buyProduct";
 
 const props = defineProps<{ product: Product }>();
@@ -93,6 +93,15 @@ const opena = async () => {
     background-color: #f6d2d2;
     padding: 6px;
     border-radius: 9px;
+  }
+    & > .have {
+    color: white;
+    font-size: 12px;
+    line-height: 8px;
+    background-color: #7cad44;
+    padding: 6px;
+    border-radius: 9px;
+    text-align: center;
   }
 }
 </style>

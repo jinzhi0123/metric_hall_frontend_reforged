@@ -6,6 +6,7 @@ type Product = {
   price: number;
   backgd_url: string;
   target_url: string;
+  alreadyHave?: boolean;
 };
 
 declare module "*.vue" {
@@ -28,5 +29,5 @@ declare module "weixin-js-sdk";
 declare module "qs";
 
 declare class WeixinJSBridge {
-  static invoke: (arg0: string, arg1: any, arg3: (res:any) => void) => {};
+  static invoke: (arg0: string, arg1: any, arg3: (res: any) => void) => {};
 }

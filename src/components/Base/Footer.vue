@@ -32,8 +32,9 @@ const pushProducts = () => {
 
 <style lang="scss" scoped>
 .foot {
+  border: 1px solid;
   position: fixed;
-  height: 80px;
+  height: 70px;
   width: 100%;
   z-index: 255;
   bottom: 0;
@@ -45,7 +46,11 @@ const pushProducts = () => {
     text-align: center;
     & > p {
       height: 0px;
-      line-height: 5px;
+      line-height: 4px;
+    }
+    & > img {
+      position: relative;
+      top: 5px;
     }
   }
 }

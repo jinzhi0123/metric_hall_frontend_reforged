@@ -1,6 +1,10 @@
 import { defineStore } from "pinia";
 import getAllProducts from "../apis/products/queryAllProducts";
+import getUserProduct from "../apis/user/getUserProduct";
 import Product from "../entity/product";
+import { loginState } from "./loginStatus";
+
+const login = loginState();
 
 export const ProductStore = defineStore("pd", {
   state: () => {
@@ -10,8 +14,19 @@ export const ProductStore = defineStore("pd", {
   },
   actions: {
     async getAll(type?: number) {
-      await getAllProducts(type).then((res) => {
-        this.productLs = res;
+      const Fall = getAllProducts();
+      const Fusr = getUserProduct(login.userid);
+      // next we will mark those
+      await Promise.all([Fall, Fusr]).then((result) => {
+        let all = result[0];
+        const usr = result[1];
+        for (const i of usr) {
+          const index = all.findIndex((a) => a.index == i.index);
+          all[index].alreadyHave = true;
+        }
+        console.log(all);
+        this.productLs = all;
+        // store products
       });
     },
   },

@@ -10,7 +10,7 @@
     <el-tab-pane label="群体" name="/products/all/others"></el-tab-pane>
     <el-tab-pane label="社会" name="/products/all/society"></el-tab-pane>
   </el-tabs>
-  <el-scrollbar height="400px">
+  <el-scrollbar height="420px">
     <div v-for="i in listing()">
       <product-card :product="i"></product-card>
     </div>
@@ -21,7 +21,7 @@
 import ProductCard from "../../components/Card/ProductCard.vue";
 import { onMounted, ref, watch } from "vue";
 import { ProductStore } from "../../store/products";
-import { useRoute, useRouter, onBeforeRouteUpdate } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import type { TabsPaneContext } from "element-plus";
 
 const router = useRouter();
