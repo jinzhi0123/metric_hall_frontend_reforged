@@ -1,15 +1,15 @@
 <template>
   <div class="foot">
     <div @click="pushHome">
-      <img width="30" src="../../assests/Home.svg" />
+      <img width="30" src="../../assests/Home.svg" alt="footer"/>
       <p>首页</p>
     </div>
     <div @click="pushProducts">
-      <img width="30" src="../../assests/Pages.svg" />
+      <img width="30" src="../../assests/Pages.svg" alt="footer"/>
       <p>测评</p>
     </div>
     <div @click="pushMine">
-      <img width="30" src="../../assests/Mine.svg" />
+      <img width="30" src="../../assests/Mine.svg" alt="footer"/>
       <p>我的</p>
     </div>
   </div>
@@ -32,9 +32,8 @@ const pushProducts = () => {
 
 <style lang="scss" scoped>
 .foot {
-  border: 1px solid;
   position: fixed;
-  height: 70px;
+  height: 75px;
   width: 100%;
   z-index: 255;
   bottom: 0;
@@ -45,12 +44,12 @@ const pushProducts = () => {
   & > div {
     text-align: center;
     & > p {
-      height: 0px;
-      line-height: 4px;
+      height: 0;
+      line-height: 5px;
     }
     & > img {
       position: relative;
-      top: 5px;
+      top: 6px;
     }
   }
 }

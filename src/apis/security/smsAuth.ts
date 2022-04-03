@@ -4,8 +4,7 @@ export async function smsSend(phone: string): Promise<boolean> {
   let res = false;
   await axios
     .post(`https://api.maiquer.tech/api/sms/smsCodeSend?phone=${phone}`)
-    .then((response) => {
-      console.log(response.data);
+    .then(() => {
       res = true;
     });
   return res;

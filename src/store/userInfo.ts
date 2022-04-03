@@ -22,7 +22,6 @@ export const userInfo = defineStore("userInfo", {
                 this.userInfo = data;
                 success = true;
             });
-            console.log(this.userInfo);
             return success;
         },
     },

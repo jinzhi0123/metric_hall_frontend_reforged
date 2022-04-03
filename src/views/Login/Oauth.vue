@@ -26,7 +26,7 @@ onMounted(async () => {
   setTimeout(() => {
     Info.fetchInfo(login.userid);
     if (res && !debug.value) {
-      router.push("/");
+      router.push("/products/all/All");
     }
   }, 1500);
 });
