@@ -62,7 +62,7 @@ export const loginState = defineStore("login", {
     },
     save2Local() {
       localStorage.clear();
-      localStorage.setItem("userId", this.userid.toString());
+      localStorage.setItem("jwt", this.jwtToken.toString());
     },
     loadfromLocal() {
       if (localStorage.getItem("jwt")) {

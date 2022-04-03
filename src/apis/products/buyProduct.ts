@@ -1,22 +1,25 @@
 import axios from "axios";
 import qs from "qs";
+import { loginState } from "../../store/loginStatus";
+
+const login = loginState();
 
 export default async function buyProduct(id: string, user_id: number) {
   let res: payd = {
-    timeStamp: "1648888835597",
-    orderNo: "ORDER_20220402084035530",
+    timeStamp: "",
+    orderNo: "",
     paySign:
-      "WzMyLCAtNzYsIC0xMDYsIDk2LCAtMTI4LCAtMjcsIDEwNCwgLTM5LCA5LCAtNDQsIC0zOSwgLTc3LCAxMTIsIDkwLCA1MiwgLTM1LCAtODksIDUsIDkxLCAtODAsIDEwOCwgMjUsIC0xMTEsIC0yOSwgLTEsIDEyMCwgMTgsIC04NCwgLTY2LCAtMTAwLCAtMzUsIC04LCA3OSwgLTMyLCA1MCwgNTAsIC0zOCwgMTQsIDg1LCAtMzEsIC0xMjAsIC00LCAtMjksIC01MSwgMjMsIC00NiwgNjgsIC02OCwgLTY4LCAzNywgLTk4LCA1OCwgNDUsIDEwMSwgMjQsIC0yMywgLTE3LCAtMjYsIC0xNiwgODksIC04LCA1MSwgNDAsIC0xMiwgMTksIDc0LCAxMDIsIC04MiwgMTgsIDEwMywgLTI4LCAtNjIsIDM4LCAxMDgsIC0xMTUsIC0xMTQsIC04MywgLTcxLCAtNDMsIC0zMSwgLTI5LCAtNzUsIC05MiwgNDYsIC03NCwgLTUxLCAtMTcsIC0yLCAzNiwgLTQ0LCAtMTEyLCAtNTgsIC00NiwgLTk5LCAtNTAsIDEwNCwgLTM5LCAtNTgsIC05NSwgNjQsIDEwNywgMTAzLCAxMDksIDU0LCA0NCwgLTIxLCAtMTIxLCAxMTIsIC05MSwgLTg1LCAtMjgsIDI1LCA3MiwgMTAxLCAtNywgOTEsIC0xMjYsIC03MSwgMzMsIDEsIC0zMywgODMsIDE0LCAxMTYsIC03LCA3LCA2MywgNTMsIDYsIDg2LCAtNTcsIDc2LCA5MCwgLTc5LCAtNTksIDE5LCA5MywgNzYsIC0xMTgsIDgwLCAzOCwgLTgsIDExNiwgLTU4LCAtNjcsIDEyLCAzLCAtOTAsIDEwNywgLTYzLCAtMTgsIC0zNCwgLTE1LCA3MSwgMzYsIC03OSwgMjIsIDEwNCwgMTIwLCAtMTI2LCAtMzEsIC0xMDksIC0zMywgNDIsIC0xMjUsIDI5LCAtNTgsIC0zMywgNDksIDEwNywgNjgsIC03MywgLTI5LCAtNDgsIDg3LCAtOSwgLTQsIDIzLCAxMDAsIDEwNywgLTcyLCAtMTI2LCAzNiwgLTI1LCAtMjUsIDc1LCAxNywgLTc2LCAtMiwgNDQsIC02MCwgMiwgLTk1LCAtNiwgODgsIDI4LCAtMTAyLCAtNjEsIDIxLCA4LCAtOCwgOTIsIDc4LCAtNiwgLTYzLCAtNzIsIC01MCwgLTk0LCAxMjAsIDI1LCA4NSwgNDMsIC00NSwgLTI5LCA0NywgNSwgLTEyMSwgLTczLCAtOTIsIDksIDgwLCAxMCwgLTQyLCAtNzIsIC0zNCwgLTM2LCAtNzgsIDg0LCAtMTAxLCAtOTcsIDMzLCAtMjIsIDI4LCA1MSwgLTY3LCA0NSwgMjcsIC00MSwgOTgsIDEyNiwgMCwgLTcyLCAtMywgOTYsIDE5LCAwLCAtMTI3LCA4OSwgLTgsIC0xMTUsIDE1LCAtOTMsIDk2LCAxLCAtNTYsIC0zN10=",
-    appId: "wx32d4d97357b79746",
-    prepayId: "wx021640354994374fabc9f1f776e2da0000",
+      "=",
+    appId: "",
+    package: "",
+    nonceStr: "",
   };
   await axios({
     url: `https://api.maiquer.tech/api/wx-pay/jsapi/${id}`,
     method: "POST",
     headers: {
       "content-type": "application/x-www-form-urlencoded",
-      "Authorization":
-        "metric-eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIyOSIsInN1YiI6ImFkbWluIiwiaWF0IjoxNjQ4ODE3MDgzLCJpc3MiOiJtZXRyaWMiLCJhdXRob3JpdGllcyI6Ilt7XCJhdXRob3JpdHlcIjpcIlJPTEVfQURNSU5cIn1dIiwiZXhwIjoxNjQ4OTAzNDgzfQ.UnF7RiK-ugDenrx3h70mTjXChietekrFij1H-Iyztyml5ZAMShseiBUv-4PNSgU4WhulP5LXZxJga7cx3UxOFg",
+      Authorization: login.jwtToken,
     },
 
     data: qs.stringify({ userId: user_id }),

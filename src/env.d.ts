@@ -18,9 +18,10 @@ declare module "*.vue" {
 declare type payd = {
   timeStamp: string;
   orderNo: string;
-  paySign: string;
+  package: string;
   appId: string;
-  prepayId: string;
+  paySign: string;
+  nonceStr: string;
 };
 
 declare module "weixin-js-sdk";

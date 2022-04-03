@@ -1,9 +1,5 @@
 <template>
-  <el-card
-    shadow="always"
-    class="product"
-    @click="opena()"
-  >
+  <el-card shadow="always" class="product" @click="opena()">
     <img :src="props.product.backgd_url" />
     <div class="descript">
       <p class="title">{{ props.product.name }}</p>
@@ -19,6 +15,7 @@
 </template>
 
 <script setup lang="ts">
+import wx from "weixin-js-sdk";
 import buyProduct from "../../apis/products/buyProduct";
 
 const props = defineProps<{ product: Product }>();
@@ -30,9 +27,9 @@ const opena = async () => {
       {
         appId: res.appId, //公众号ID，由商户传入
         timeStamp: res.timeStamp, //时间戳，自1970年以来的秒数
-        nonceStr: "e61463f8efa94090b1f366cccfbbb444", //随机串
-        package: `prepay_id=${res.prepayId}`,
-        // signType: "MD5", //微信签名方式：
+        nonceStr: res.nonceStr, //随机串
+        package: res.package, //
+        signType: "RSA", //微信签名方式：
         paySign: res.paySign, //微信签名
       },
       function (res: any) {
