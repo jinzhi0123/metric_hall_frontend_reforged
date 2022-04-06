@@ -21,12 +21,12 @@ const Info = userInfo();
 
 code.value = route.query.code as string;
 onMounted(async () => {
-  const res = await login.wxLogin(code.value);
-  isOK.value = res;
-  setTimeout(() => {
+  setTimeout(async () => {
+    const res = await login.wxLogin(code.value);
+    isOK.value = res;
     Info.fetchInfo(login.userid);
     if (res && !debug.value) {
-      router.push("/products/all/All");
+      await router.push("/products/all/All");
     }
   }, 1500);
 });
