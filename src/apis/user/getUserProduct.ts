@@ -12,7 +12,7 @@ export default async function getInfo(userid: number): Promise<Product[]> {
             const all = response.data.data.myEvaluations;
             if (all.length != 0) {
                 for (const i of all) {
-                    const a = new Product(i.name, i.id, i.coverPic, i.realUrl, i.price);
+                    const a = new Product(i.name, i.id, i.coverPic, i.realUrl, i.price,i.type);
                     res.push(a);
                 }
             }

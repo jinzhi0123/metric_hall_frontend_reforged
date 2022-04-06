@@ -42,12 +42,12 @@ const type = (): number => {
 };
 
 router.afterEach(async () => {
-  await all_products.getAll(type());
+  await all_products.getAll();
 });
 
 const all_products = ProductStore();
 onMounted(async () => {
-  await all_products.getAll(type());
+  await all_products.getAll();
 });
 const listing = () => {
   return all_products.productLs;
