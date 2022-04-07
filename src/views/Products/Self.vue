@@ -19,9 +19,8 @@
 </template>
 
 <script lang="ts" setup>
-import {onMounted, ref} from "vue";
-import {ProductStore} from "../../store/products";
-import {useRoute, useRouter} from "vue-router";
+import {ref} from "vue";
+import {useRouter} from "vue-router";
 import type {TabsPaneContext} from "element-plus";
 
 const router = useRouter();
@@ -29,27 +28,5 @@ const activeName = ref("/products/all/All");
 
 const handleClick = (tab: TabsPaneContext) => {
   router.push(tab.paneName as string);
-};
-const route = useRoute();
-const parat = () => {
-  return String(route.params.type);
-};
-
-const typeMapping = ["All", "self", "others"];
-
-const type = (): number => {
-  return typeMapping.indexOf(parat());
-};
-
-router.afterEach(async () => {
-  await all_products.getAll();
-});
-
-const all_products = ProductStore();
-onMounted(async () => {
-  await all_products.getAll();
-});
-const listing = () => {
-  return all_products.productLs;
 };
 </script>

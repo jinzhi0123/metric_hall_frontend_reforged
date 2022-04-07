@@ -36,7 +36,6 @@ const handleClick = (tab: TabsPaneContext) => {
 
 const listing = computed(() => {
   return all_products.productLs.filter(i => {
-
     return i.type == typeIndex.value || typeIndex.value == 0
   });
 });
