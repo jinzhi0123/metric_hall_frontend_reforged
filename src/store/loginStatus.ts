@@ -2,6 +2,7 @@ import {defineStore} from "pinia";
 import login from "../apis/security/login";
 import wxauth from "../apis/security/wxauth";
 import {smsSend, smsAuth} from "../apis/security/smsAuth";
+import {useRouter} from "vue-router";
 
 export const loginState = defineStore("login", {
     state: () => {
@@ -72,5 +73,9 @@ export const loginState = defineStore("login", {
                 this.isLoggedIn = true;
             }
         },
+        logout() {
+            localStorage.clear();
+
+        }
     },
 });
