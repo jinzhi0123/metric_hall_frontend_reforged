@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="always" class="product" @click="opena()">
+  <el-card shadow="always" class="product" @click="ClickCard()">
     <img :src="props.product.backgd_url" alt=""/>
     <div class="description">
       <p class="title">{{ props.product.name }}</p>
@@ -23,7 +23,11 @@ import addProduct from "../../apis/products/addProduct";
 const login = loginState()
 
 const props = defineProps<{ product: Product }>();
-const opena = async () => {
+const ClickCard = async () => {
+  if (!login.isLoggedIn){
+    window.open("https://api.maiquer.tech/api/wechat/login")
+    return
+  }
   if (props.product.alreadyHave) {
     window.open(props.product.target_url)
   } else {
@@ -38,7 +42,7 @@ const opena = async () => {
             signType: "RSA", //微信签名方式：
             paySign: res.paySign, //微信签名
           },
-          async function (res: any) {
+          async (res: any) => {
             if (res.err_msg == "get_brand_wcpay_request:ok") {
               await addProduct(props.product.index).then(
                   res => {

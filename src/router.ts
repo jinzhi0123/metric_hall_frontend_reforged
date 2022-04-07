@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import {loginState} from "./store/loginStatus";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -30,7 +31,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: "mine/:type",
-        component: () => import("./views/Products/Self.vue"),
+        component: () => import("./views/Products/Self.vue")
       },
     ],
   },
@@ -38,6 +39,13 @@ const routes: Array<RouteRecordRaw> = [
     path: "/mine",
     name: "Mine",
     component: () => import("./views/Mine.vue"),
+    beforeEnter:()=>{
+      const login = loginState()
+      if(!login.isLoggedIn){
+        window.open("https://api.maiquer.tech/api/wechat/login")
+        return false
+      }
+    }
   },
   {
     path: "/oauth2",

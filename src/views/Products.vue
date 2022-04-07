@@ -48,6 +48,26 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
 </script>
 
 <style lang="scss" scoped>
+@keyframes card-fade-in-up {
+  from {
+    transform: translateY(-50%);
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes card-fade-in-down {
+  from {
+    transform: translateY(50%);
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .el-main {
   height: 75vh;
 }
@@ -55,6 +75,7 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
 .demo-tabs {
   position: relative;
   top: 25px;
+  animation: card-fade-in-down 1s;
   // background-color: white;
   & > .el-tabs__content {
     padding: 32px;
@@ -94,6 +115,7 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
   top: 20px;
   width: 90%;
   height: 85px;
+  animation: card-fade-in-up 1s;
 
   & img {
     border-radius: 50%;
@@ -148,7 +170,7 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
 
 .main {
   //background-col#ededed;
-  background: linear-gradient(#ededed,#fff);
+  background: linear-gradient(#ededed, #fff);
   height: 100vh;
 }
 </style>
