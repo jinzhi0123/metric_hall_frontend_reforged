@@ -1,15 +1,15 @@
 <template>
   <div class="foot">
     <div @click="pushHome">
-      <img width="30" src="../../assests/Home.svg" alt="footer"/>
+      <img width="25" src="../../assests/Home.svg" alt="footer"/>
       <p>首页</p>
     </div>
     <div @click="pushProducts">
-      <img width="30" src="../../assests/Pages.svg" alt="footer"/>
+      <img width="25" src="../../assests/Pages.svg" alt="footer"/>
       <p>测评</p>
     </div>
     <div @click="pushMine">
-      <img width="30" src="../../assests/Mine.svg" alt="footer"/>
+      <img width="25" src="../../assests/Mine.svg" alt="footer"/>
       <p>我的</p>
     </div>
   </div>
@@ -45,6 +45,7 @@ const pushProducts = () => {
     text-align: center;
     & > p {
       height: 0;
+      font-size: 13px;
       line-height: 5px;
     }
     & > img {

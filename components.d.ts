@@ -24,7 +24,9 @@ declare module 'vue' {
     MineCard: typeof import('./src/components/Mine/MineCard.vue')['default']
     MineInfo: typeof import('./src/components/Mine/MineInfo.vue')['default']
     ProductCard: typeof import('./src/components/Card/ProductCard.vue')['default']
+    ProductCardCol: typeof import('./src/components/Card/ProductCardCol.vue')['default']
     ProductListView: typeof import('./src/components/Products/ProductListView.vue')['default']
+    ProductRowView: typeof import('./src/components/Products/ProductRowView.vue')['default']
     ReadingList: typeof import('./src/components/Home/ReadingList.vue')['default']
     Sample: typeof import('./src/components/sample.vue')['default']
   }

@@ -123,16 +123,16 @@ import {useRouter} from "vue-router";
 
 const router = useRouter()
 const fav = () => {
-  router.push("/myfav")
+  router.push("/myfav");
 }
 const diary = () => {
-  router.push("/diary")
+  router.push("/diary");
 }
 const order = () => {
-  router.push("/order")
+  router.push("/order");
 }
 const present = () => {
-  router.push("/present")
+  router.push("/present");
 }
 
 </script>
