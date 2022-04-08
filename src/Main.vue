@@ -22,7 +22,7 @@ const products = ProductStore();
 onBeforeMount(async () => {
 // const product = ProductStore()
       login.loadfromLocal();
-      await Promise.all([info.fetchInfo(login.userid), products.getAll()]);
+      await Promise.all([info.fetchInfo(login.userid,login.jwtToken), products.getAll()]);
     }
 )
 

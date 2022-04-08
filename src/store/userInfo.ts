@@ -16,9 +16,9 @@ export const userInfo = defineStore("userInfo", {
         };
     },
     actions: {
-        async fetchInfo(userid: number): Promise<boolean> {
+        async fetchInfo(userid: number, jwt: string): Promise<boolean> {
             let success = false;
-            await getInfo(userid).then((data) => {
+            await getInfo(userid, jwt).then((data) => {
                 this.userInfo = data;
                 success = true;
             });

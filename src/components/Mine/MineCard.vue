@@ -1,7 +1,7 @@
 <template>
   <div class="join-us">
     <el-card class="main-card">
-      <div>
+      <div @click="fav">
 
         <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
              width="37" height="37">
@@ -16,7 +16,7 @@
           收藏
         </p>
       </div>
-      <div>
+      <div @click="order">
         <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
              width="37" height="37">
           <path
@@ -44,7 +44,7 @@
           日记
         </p>
       </div>
-      <div>
+      <div @click="diary">
         <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
              p-id="1946" width="37" height="37">
           <path
@@ -62,7 +62,7 @@
         </p>
       </div>
     </el-card>
-    <div>
+    <div @click="present">
 
       <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto"
            viewBox="0 0 240 120" height="120px" width="240px">
@@ -111,14 +111,31 @@
           </g>
         </g>
       </svg>
-    <h3>加入我们</h3>
-    <p>南京麦趣科技</p>
+      <h3>加入我们</h3>
+      <p>南京麦趣科技</p>
     </div>
 
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import {useRouter} from "vue-router";
+
+const router = useRouter()
+const fav = () => {
+  router.push("/myfav")
+}
+const diary = () => {
+  router.push("/diary")
+}
+const order = () => {
+  router.push("/order")
+}
+const present = () => {
+  router.push("/present")
+}
+
+</script>
 
 <style lang="scss" scoped>
 .join-us {
