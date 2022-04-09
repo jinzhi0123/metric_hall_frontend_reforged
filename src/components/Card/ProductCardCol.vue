@@ -10,11 +10,6 @@
       <span class="have" v-else>已经购买</span>
     </div>
   </el-card>
-  <!--  <div class="tags">-->
-  <!--    <span>{{ 5 }}人测过</span>-->
-  <!--    <span>需要{{ 15 }}分钟</span>-->
-  <!--    <span>恋爱真难</span>-->
-  <!--  </div>-->
 </template>
 
 <script setup lang="ts">

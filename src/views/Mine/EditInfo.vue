@@ -4,7 +4,7 @@
       <div>用户信息</div>
       <div class="username">
         <span>用户名</span>
-        <span>{{ info.username }}</span>
+        <span>{{ myinfo.name }}</span>
         <el-button @click="editName">修改</el-button>
       </div>
     </el-card>
@@ -16,8 +16,14 @@
 
 <script lang="ts" setup>
 import {userInfo} from "../../store/userInfo";
+import {computed} from "vue";
+import {useRouter} from "vue-router";
 
 const info = userInfo()
+
+const myinfo = computed(()=>{
+  return info.userInfo
+})
 const editName = () => {
   console.log("d")
 }

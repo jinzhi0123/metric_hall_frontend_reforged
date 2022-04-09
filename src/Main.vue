@@ -17,10 +17,10 @@ const login = loginState()
 const info = userInfo();
 const products = ProductStore();
 
-//after mounted, init data
 
 onBeforeMount(async () => {
-// const product = ProductStore()
+//
+//after mounted, init products
       login.loadfromLocal();
       await Promise.all([info.fetchInfo(login.userid,login.jwtToken), products.getAll()]);
     }

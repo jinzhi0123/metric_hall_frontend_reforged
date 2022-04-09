@@ -1,21 +1,23 @@
 <template>
   <el-carousel trigger="click" height="200px">
     <el-carousel-item
-      v-for="item of urls"
-      :key="item"
-      class="iconc"
-      :style="{ backgroundImage: `url(${item})` }"
+        v-for="item of urls"
+        :key="item"
+        class="iconc"
+        :style="{ backgroundImage: `url(${item})` }"
     >
     </el-carousel-item>
   </el-carousel>
   <div class="home">
-    <el-card>
+    <el-card class="intro">
       <h1>嘿！这里是麦趣咖啡馆</h1>
-      <h4>来一杯卡布奇诺吗</h4>
+      <p>
+        热门推荐
+      </p>
+      <product-row-view/>
     </el-card>
-    <product-row-view />
-    <el-empty description="咖啡店正在施工哦" />
-<!--    todo: -->
+    <el-empty description="咖啡店正在施工哦"/>
+    <!--    todo: -->
   </div>
 </template>
 
@@ -28,6 +30,16 @@ const urls = [
 </script>
 
 <style lang="scss" scoped>
+.intro {
+  position: relative;
+  border-radius: 20px 20px 0 0;
+  top: -20px;
+  & p{
+    font-size: 20px;
+    font-family: "Microsoft YaHei";
+  }
+}
+
 .home {
   height: 100vh;
   background-color: #ececec;
@@ -37,7 +49,7 @@ const urls = [
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;
-  
+
 }
 
 .todo {

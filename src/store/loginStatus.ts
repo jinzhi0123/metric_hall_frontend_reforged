@@ -2,7 +2,6 @@ import {defineStore} from "pinia";
 import login from "../apis/security/login";
 import wxauth from "../apis/security/wxauth";
 import {smsSend, smsAuth} from "../apis/security/smsAuth";
-import {useRouter} from "vue-router";
 
 export const loginState = defineStore("login", {
     state: () => {
@@ -71,6 +70,7 @@ export const loginState = defineStore("login", {
                 const id = eval(`(${atob(data)})`);
                 this.userid = id.jti;
                 this.isLoggedIn = true;
+                console.log(`Loaded from local, userID is ${this.userid},jwt is ${this.jwtToken}`)
             }
         },
         logout() {
