@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 import getInfo from "../apis/user/getInfo";
 import UserInfo from "../entity/userInfo";
-import {editSign, editSignature, editUsername} from "../apis/user/editInfo";
+import { editSignature, editUsername} from "../apis/user/editInfo";
 import {loginState} from "./loginStatus";
 
 export const userInfo = defineStore("userInfo", {

@@ -19,25 +19,27 @@ import {loginState} from "../../store/loginStatus";
 
 
 const UserInfo = userInfo();
-const router = useRouter()
 const login = loginState()
 
 const info = computed(() => {
   return UserInfo.userInfo;
 })
 
-const backgd=computed(()=>{
+const backgd = computed(() => {
   return `url(${UserInfo.userInfo.backgd_url})`
 })
 
-const editInfo = () => {
-  router.push("/editinfo")
+  const router = useRouter()
+const editInfo = async () => {
+  await router.push({path: "/editinfo"})
 };
 
 const logout = () => {
   login.logout()
-  const router = useRouter();
   router.push("/");
+  setTimeout(()=>{
+    location.reload()
+  },1000)
 }
 </script>
 
@@ -54,7 +56,7 @@ const logout = () => {
 
 .back {
   height: 300px;
-  background-image: linear-gradient(to top, #f0f0f0, rgba(255, 255, 255, 0)), v-bind(backgd)!important;
+  background-image: linear-gradient(to top, #f0f0f0, rgba(255, 255, 255, 0)), v-bind(backgd) !important;
   background-repeat: no-repeat;
   background-size: cover;
 }

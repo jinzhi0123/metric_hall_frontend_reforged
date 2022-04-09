@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <el-card class="main-card">
+    <el-card class="main-card" @click="login">
       <img width="50" :src="info().avtr_url" alt="头像">
       <div class="info">
         <h4>{{ info().name }}</h4>
@@ -31,6 +31,7 @@ import {onMounted, ref} from "vue";
 import type {TabsPaneContext} from "element-plus";
 import {useRouter} from "vue-router";
 import {userInfo} from "../store/userInfo";
+import {loginState} from "../store/loginStatus";
 
 const UserInfo = userInfo();
 
@@ -45,6 +46,13 @@ const activeName = ref("all");
 const handleClick = (tab: TabsPaneContext, event: Event) => {
   router.push(tab.paneName == "all" ? "/products/all/All" : "/products/mine");
 };
+
+const login = () => {
+  const l = loginState()
+  if (!l.isLoggedIn) {
+    window.open("https://api.maiquer.tech/api/wechat/login")
+  }
+}
 </script>
 
 <style lang="scss" scoped>

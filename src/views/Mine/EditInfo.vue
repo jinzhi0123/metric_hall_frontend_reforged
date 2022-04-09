@@ -4,7 +4,7 @@
       <table class="info">
         <tr>
           <td>头像</td>
-          <td><img width="65" :src="myinfo.avtr_url"></td>
+          <td><img width="65" :src="myinfo.avtr_url" @click="uploadAvtr"></td>
           <td> ›</td>
         </tr>
         <tr>
@@ -58,15 +58,19 @@ const sign = ref("")
 name.value = info.userInfo.name
 sign.value = info.userInfo.signiture
 
-const editName = async() => {
+const editName = async () => {
   console.log(`Attempting to change username to ${name.value}`)
   await info.editnickName(name.value)
   clicked.value = false
 }
-const editSign = async() => {
+const editSign = async () => {
   console.log(`Changing sign to ${sign.value}`)
   await info.editSign(sign.value);
   sclicked.value = false
+}
+
+const uploadAvtr = (e:Event) => {
+  let file=e.target.files[0]
 }
 
 </script>
