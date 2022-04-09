@@ -15,7 +15,7 @@ export const ProductStore = defineStore("pd", {
         async getAll() {
             const login = loginState();
             const Fall = getAllProducts();
-            const Fusr = getUserProduct(login.userid);
+            const Fusr = getUserProduct(login.userid,login.jwtToken);
             // next we will mark those
             await Promise.all([Fall, Fusr]).then((result) => {
                 let all = result[0];
