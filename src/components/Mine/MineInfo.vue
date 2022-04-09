@@ -1,11 +1,14 @@
 <template>
-  <el-card class="main-card">
-    <img width="100" :src="info.avtr_url" alt="头像"/>
-    <el-button @click="editInfo">编辑信息</el-button>
-    <el-button @click="logout">登出</el-button>
-    <h4>{{ info.name }}</h4>
-    <p>{{ info.signiture }}</p>
-  </el-card>
+  <div>
+    <div class="back"></div>
+    <el-card class="main-card">
+      <img width="100" :src="info.avtr_url" alt="头像"/>
+      <el-button @click="editInfo">编辑信息</el-button>
+      <el-button @click="logout">登出</el-button>
+      <h4>{{ info.name }}</h4>
+      <p>{{ info.signiture }}</p>
+    </el-card>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -21,6 +24,10 @@ const login = loginState()
 
 const info = computed(() => {
   return UserInfo.userInfo;
+})
+
+const backgd=computed(()=>{
+  return `url(${UserInfo.userInfo.backgd_url})`
 })
 
 const editInfo = () => {
@@ -45,15 +52,32 @@ const logout = () => {
   }
 }
 
+.back {
+  height: 300px;
+  background-image: linear-gradient(to top, #f0f0f0, rgba(255, 255, 255, 0)), v-bind(backgd)!important;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+:deep(.el-card__body) {
+  padding-top: 0;
+
+}
+
 .main-card {
   position: relative;
-  margin: 0 auto;
+  margin: -170px auto 0;
   top: 20px;
   width: 90%;
+  border-radius: 20px 20px 0 0;
   animation: fade-in-down 1s;
+  overflow: visible;
 
   & img {
     border-radius: 50%;
+    margin-top: -50%;
+    //transform: translateY(-50%);
+    overflow: visible;
   }
 
   & .el-button {
