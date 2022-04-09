@@ -10,7 +10,7 @@ export default async function getInfo(userid: number, jwt: string): Promise<User
     })
         .then((response) => {
             result = new UserInfo(
-                response.data.data.username,
+                response.data.data.nickname,
                 response.data.data.id,
                 response.data.data.backImg,
                 response.data.data.avatar,

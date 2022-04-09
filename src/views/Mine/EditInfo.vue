@@ -15,14 +15,17 @@
         <tr>
           <td>用户名</td>
           <td>
-            <span v-if="!clicked" @click="clicked=true">{{myinfo.name}}</span>
-            <el-input v-else v-model="name" @blur="clicked=false"></el-input>
+            <span v-if="!clicked" @click="clicked=true">{{ myinfo.name }}</span>
+            <el-input v-else v-model="name" @blur="editName"></el-input>
           </td>
           <td> ›</td>
         </tr>
         <tr>
           <td>个性签名</td>
-          <td>{{ myinfo.signiture }}</td>
+          <td>
+            <span v-if="!sclicked" @click="sclicked=true">{{ myinfo.signiture }}</span>
+            <el-input v-else v-model="sign" @blur="editSign"></el-input>
+          </td>
           <td> ›</td>
         </tr>
         <tr>
@@ -45,15 +48,25 @@ import {userInfo} from "../../store/userInfo";
 import {computed, ref} from "vue";
 
 const info = userInfo()
-
 const myinfo = computed(() => {
   return info.userInfo
 })
 const clicked = ref(false)
+const sclicked = ref(false)
 const name = ref("")
+const sign = ref("")
 name.value = info.userInfo.name
-const editName = () => {
-  console.log("d")
+sign.value = info.userInfo.signiture
+
+const editName = async() => {
+  console.log(`Attempting to change username to ${name.value}`)
+  await info.editnickName(name.value)
+  clicked.value = false
+}
+const editSign = async() => {
+  console.log(`Changing sign to ${sign.value}`)
+  await info.editSign(sign.value);
+  sclicked.value = false
 }
 
 </script>
