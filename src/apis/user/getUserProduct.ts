@@ -3,6 +3,9 @@ import Product from "../../entity/product";
 
 export default async function getInfo(userid: number, jwt: string): Promise<Product[]> {
     let res = [] as Product[];
+    if (jwt == "") {
+        return []
+    }
     await axios({
         url: `https://api.maiquer.tech/api/user/queryById/${userid}`,
         method: "GET",

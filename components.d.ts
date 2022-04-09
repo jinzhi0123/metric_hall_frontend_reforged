@@ -12,6 +12,8 @@ declare module 'vue' {
     ElEmpty: typeof import('element-plus/es')['ElEmpty']
     ElMain: typeof import('element-plus/es')['ElMain']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
+    ElTable: typeof import('element-plus/es')['ElTable']
+    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     Footer: typeof import('./src/components/Base/Footer.vue')['default']

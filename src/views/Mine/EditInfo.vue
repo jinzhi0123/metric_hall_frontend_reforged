@@ -1,12 +1,28 @@
 <template>
   <div>
     <el-card class="edit">
-      <div>用户信息</div>
-      <div class="username">
-        <span>用户名</span>
-        <span>{{ myinfo.name }}</span>
-        <el-button @click="editName">修改</el-button>
-      </div>
+      <table class="info">
+        <tr>
+          <td>头像</td>
+          <td>头像</td>
+        </tr>
+        <tr>
+          <td>用户名</td>
+          <td>{{ myinfo.name }}</td>
+        </tr>
+        <tr>
+          <td>个性签名</td>
+          <td>{{ myinfo.signiture }}</td>
+        </tr>
+        <tr>
+          <td>绑定手机号</td>
+          <td>{{ myinfo.phone ? myinfo.phone : "未绑定" }}</td>
+        </tr>
+        <tr>
+          <td>绑定微信</td>
+          <td>已绑定</td>
+        </tr>
+      </table>
     </el-card>
     <el-empty description="这里正在施工哦"></el-empty>
   </div>
@@ -18,7 +34,7 @@ import {computed} from "vue";
 
 const info = userInfo()
 
-const myinfo = computed(()=>{
+const myinfo = computed(() => {
   return info.userInfo
 })
 const editName = () => {
@@ -30,16 +46,25 @@ const editName = () => {
 <style scoped lang="scss">
 .edit {
   margin: 20px;
-  padding: 30px;
+  padding: 20px;
 
   & > {
     width: 100%
   }
 }
 
-.username {
-  & > :nth-of-type(2) {
-    width: 100px;
+.info {
+  & tr {
+    height: 40px;
+    border: 2px solid black;
+
+    & td:first-child {
+      color: gray;
+    }
+
+    & td:nth-of-type(2) {
+      text-align: end;
+    }
   }
 }
 
