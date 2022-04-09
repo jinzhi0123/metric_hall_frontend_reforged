@@ -68,6 +68,9 @@ const routes: Array<RouteRecordRaw> = [
     }, {
         path: "/present",
         component: () => import("./views/Mine/MyPresents.vue")
+    }, {
+        path: "/redir",
+        component: () => import("./views/Login/redir.vue")
     }
 ];
 

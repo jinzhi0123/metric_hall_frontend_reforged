@@ -5,27 +5,30 @@
         <tr>
           <td>头像</td>
           <td><img width="65" :src="myinfo.avtr_url"></td>
-          <td> › </td>
+          <td> ›</td>
         </tr>
         <tr>
           <td>背景图</td>
           <td><img width="105" :src="myinfo.backgd_url"></td>
-          <td> › </td>
+          <td> ›</td>
         </tr>
         <tr>
           <td>用户名</td>
-          <td>{{ myinfo.name }}</td>
-          <td> › </td>
+          <td>
+            <span v-if="!clicked" @click="clicked=true">{{myinfo.name}}</span>
+            <el-input v-else v-model="name" @blur="clicked=false"></el-input>
+          </td>
+          <td> ›</td>
         </tr>
         <tr>
           <td>个性签名</td>
           <td>{{ myinfo.signiture }}</td>
-          <td> › </td>
+          <td> ›</td>
         </tr>
         <tr>
           <td>绑定手机号</td>
           <td>{{ myinfo.phone ? myinfo.phone : "未绑定" }}</td>
-          <td> › </td>
+          <td> ›</td>
         </tr>
         <tr>
           <td>绑定微信</td>
@@ -39,13 +42,16 @@
 
 <script lang="ts" setup>
 import {userInfo} from "../../store/userInfo";
-import {computed} from "vue";
+import {computed, ref} from "vue";
 
 const info = userInfo()
 
 const myinfo = computed(() => {
   return info.userInfo
 })
+const clicked = ref(false)
+const name = ref("")
+name.value = info.userInfo.name
 const editName = () => {
   console.log("d")
 }
@@ -79,7 +85,7 @@ const editName = () => {
 
     & td:nth-of-type(3) {
       position: relative;
-      margin-top:2px!important;
+      margin-top: 2px !important;
       text-align: end;
       color: #6b778c;
       font-size: 16px;
