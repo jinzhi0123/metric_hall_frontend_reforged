@@ -138,6 +138,17 @@ const present = () => {
 </script>
 
 <style lang="scss" scoped>
+
+@keyframes fade-in-up {
+  from {
+    transform: translateY(50%);
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .join-us {
   position: relative;
   top: 20px;
@@ -152,7 +163,8 @@ const present = () => {
   margin: 0 auto;
   top: 20px;
   width: 90%;
-
+  border-radius: 0 0 20px 20px;
+  animation: fade-in-up 1s;
   p {
     color: grey;
     line-height: 4px;

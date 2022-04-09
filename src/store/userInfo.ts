@@ -11,7 +11,8 @@ export const userInfo = defineStore("userInfo", {
                 backgd_url: "https://tg-1252147446.cos.ap-shanghai.myqcloud.com/2019/10/Surface-Pro7.jpg",
                 avtr_url: "https://pic4.zhimg.com/50/v2-6afa72220d29f045c15217aa6b275808_hd.jpg",
                 email: "请登录",
-                phone: "00000"
+                phone: "00000",
+                signiture: ""
             } as UserInfo,
         };
     },

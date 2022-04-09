@@ -10,14 +10,11 @@
     </el-card>
     <el-empty description="这里正在施工哦"></el-empty>
   </div>
-
-
 </template>
 
 <script lang="ts" setup>
 import {userInfo} from "../../store/userInfo";
 import {computed} from "vue";
-import {useRouter} from "vue-router";
 
 const info = userInfo()
 

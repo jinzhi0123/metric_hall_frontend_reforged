@@ -5,6 +5,7 @@ export default class UserInfo {
     public readonly backgd_url: string,
     public readonly avtr_url: string,
     public readonly email: string,
-    public readonly phone: string
+    public readonly phone: string,
+    public readonly signiture: string,
   ) {}
 }
