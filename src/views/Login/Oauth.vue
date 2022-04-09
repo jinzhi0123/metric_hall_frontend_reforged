@@ -26,7 +26,6 @@ onMounted(async () => {
     isOK.value = res;
     Info.fetchInfo(login.userid,login.jwtToken);
     if (res && !debug.value) {
-      location.reload();
       await router.push("/products/all/All");
     }
   }, 1500);

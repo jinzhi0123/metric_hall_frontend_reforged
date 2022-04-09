@@ -9,12 +9,11 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, ref} from "vue";
+import {computed} from "vue";
 import {userInfo} from "../../store/userInfo";
 import {useRouter} from "vue-router";
 import {loginState} from "../../store/loginStatus";
 
-const days = ref(0);
 
 const UserInfo = userInfo();
 const router = useRouter()
