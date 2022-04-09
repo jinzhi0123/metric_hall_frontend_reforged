@@ -82,7 +82,7 @@ const logout = () => {
 
   & .el-button {
     float: right;
-    margin: 0 0 0 10px;
+    margin: 25px 0 0 10px;
   }
 
   p {
