@@ -4,14 +4,26 @@
       <table class="info">
         <tr>
           <td>头像</td>
-          <td><img width="65" :src="myinfo.avtr_url" @click="uploadAvtr"></td>
+          <!--          <td><img width="65" :src="myinfo.avtr_url" @click="uploadAvtr"></td>-->
+          <td>
+            <el-upload
+                class="avatar-uploader"
+                action="https://api.maiquer.tech/api/upload/image"
+                :show-file-list="false"
+                :on-success="handleAvatarSuccess"
+                name="imgFile"
+                :headers="token"
+                :before-upload="beforeAvatarUpload"
+            >
+              <img width=65 v-if="imageUrl" :src="imageUrl" class="avatar"/>
+            </el-upload>
+          </td>
+
           <td> ›</td>
         </tr>
         <tr>
           <td>背景图</td>
           <td>
-
-            <el-input type="file"></el-input>
             <img width="105" :src="myinfo.backgd_url">
 
           </td>
@@ -51,31 +63,57 @@
 <script lang="ts" setup>
 import {userInfo} from "../../store/userInfo";
 import {computed, ref} from "vue";
+import {ElMessage} from 'element-plus'
+import type {UploadProps} from 'element-plus'
+import {loginState} from "../../store/loginStatus";
 
+// 初始化 信息等等
 const info = userInfo()
 const myinfo = computed(() => {
   return info.userInfo
 })
+const login = loginState();
+const token = computed(() => {
+  return {Authorization: login.jwtToken}
+})
+//初始化页面逻辑要用到的信息
 const clicked = ref(false)
 const sclicked = ref(false)
 const name = ref("")
 const sign = ref("")
+const imageUrl = ref("")
 name.value = info.userInfo.name
 sign.value = info.userInfo.signiture
+imageUrl.value = info.userInfo.avtr_url
 
+// 修改用户基本信息
 const editName = async () => {
-  console.log(`Attempting to change username to ${name.value}`)
   await info.editnickName(name.value)
   clicked.value = false
 }
 const editSign = async () => {
-  console.log(`Changing sign to ${sign.value}`)
   await info.editSign(sign.value);
   sclicked.value = false
 }
 
-const uploadAvtr = (e: Event) => {
-  // let file = e.target.files[0]
+//上传文件逻辑
+const handleAvatarSuccess: UploadProps['onSuccess'] = async (
+    response,
+    uploadFile
+) => {
+  await info.editAvtr(response.data)
+  imageUrl.value = URL.createObjectURL(uploadFile.raw!)
+}
+const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
+  console.log(rawFile)
+  if (rawFile.type !== 'image/jpeg') {
+    ElMessage.error('Avatar picture must be JPG format!')
+    return false
+  } else if (rawFile.size / 1024 / 1024 > 2) {
+    ElMessage.error('Avatar picture size can not exceed 2MB!')
+    return false
+  }
+  return true
 }
 
 </script>
@@ -88,6 +126,11 @@ const uploadAvtr = (e: Event) => {
   & > {
     width: 100%
   }
+}
+
+.avatar-uploader {
+  position: relative;
+  height: 100%;
 }
 
 .info {

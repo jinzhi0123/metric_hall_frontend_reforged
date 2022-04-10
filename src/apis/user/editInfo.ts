@@ -23,3 +23,13 @@ export async function editSignature(sign: string, userid: number, jwt: string): 
         }
     })
 }
+
+export async function editAvatar(url: string, userId: number, jwt: string): Promise<void> {
+    await axios({
+        url: `https://api.maiquer.tech/api/user/updateAvatar?userId=${userId}&avatar=${url}`,
+        headers: {
+            Authorization: jwt
+        },
+        method: "PUT"
+    })
+}
