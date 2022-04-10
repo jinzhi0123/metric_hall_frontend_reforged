@@ -33,7 +33,7 @@
                 :headers="token"
                 :before-upload="beforeAvatarUpload"
             >
-              <img width="105" :src="myinfo.backgd_url">
+              <img width="105" :src="info.backgd_url">
             </el-upload>
 
           </td>
@@ -42,7 +42,7 @@
         <tr>
           <td>用户名</td>
           <td>
-            <span v-if="!clicked" @click="clicked=true">{{ myinfo.name }}</span>
+            <span v-if="!isEditingName" @click="isEditingName=true">{{ info.name }}</span>
             <el-input v-else v-model="name" @blur="editName"></el-input>
           </td>
           <td> ›</td>
@@ -50,14 +50,14 @@
         <tr>
           <td>个性签名</td>
           <td>
-            <span v-if="!sclicked" @click="sclicked=true">{{ myinfo.signiture }}</span>
+            <span v-if="!isEditingSign" @click="isEditingSign=true">{{ info.signiture }}</span>
             <el-input v-else v-model="sign" @blur="editSign"></el-input>
           </td>
           <td> ›</td>
         </tr>
         <tr>
           <td>绑定手机号</td>
-          <td>{{ myinfo.phone ? myinfo.phone : "未绑定" }}</td>
+          <td>{{ info.phone ? info.phone : "未绑定" }}</td>
           <td> ›</td>
         </tr>
         <tr>
@@ -78,48 +78,40 @@ import type {UploadProps} from 'element-plus'
 import {loginState} from "../../store/loginStatus";
 
 // 初始化 信息等等
-const info = userInfo()
-const myinfo = computed(() => {
-  return info.userInfo
-})
+const UserInfo = userInfo()
 const login = loginState();
+const info = computed(() => {
+  return UserInfo.userInfo
+})
 const token = computed(() => {
   return {Authorization: login.jwtToken}
 })
 //初始化页面逻辑要用到的信息
-const clicked = ref(false)
-const sclicked = ref(false)
-const name = ref("")
-const sign = ref("")
-const imageUrl = ref("")
-name.value = info.userInfo.name
-sign.value = info.userInfo.signiture
-imageUrl.value = info.userInfo.avtr_url
+const isEditingName = ref(false)
+const isEditingSign = ref(false)
+const name = ref(UserInfo.userInfo.name)
+const sign = ref(UserInfo.userInfo.signiture)
+const imageUrl = ref(UserInfo.userInfo.avtr_url)
 
 // 修改用户基本信息
 const editName = async () => {
-  await info.editnickName(name.value)
-  clicked.value = false
+  await UserInfo.editNickname(name.value)
+  isEditingName.value = false
 }
 const editSign = async () => {
-  await info.editSign(sign.value);
-  sclicked.value = false
+  await UserInfo.editSign(sign.value);
+  isEditingSign.value = false
 }
 
 //上传文件逻辑
-const handleAvatarSuccess: UploadProps['onSuccess'] = async (
-    response
-) => {
-  await info.editAvtr(response.data)
+const handleAvatarSuccess: UploadProps['onSuccess'] = async response => {
+  await UserInfo.editAvtr(response.data)
 }
 
-const handleBackSuccess: UploadProps['onSuccess'] = async (
-    response,
-) => {
-  await info.editBack(response.data)
+const handleBackSuccess: UploadProps['onSuccess'] = async response => {
+  await UserInfo.editBack(response.data)
 }
 const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
-  console.log(rawFile)
   return true
 }
 

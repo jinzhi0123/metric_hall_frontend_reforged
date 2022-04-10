@@ -11,9 +11,7 @@
     <el-tab-pane label="社会" name="3"></el-tab-pane>
   </el-tabs>
   <el-scrollbar height="420px">
-    <div v-for="i in listing">
-      <product-card :product="i"></product-card>
-    </div>
+    <product-list-view :listing="listing" />
   </el-scrollbar>
 </template>
 
@@ -23,6 +21,7 @@ import {computed, ref} from "vue";
 import {ProductStore} from "../../store/products";
 import {useRouter} from "vue-router";
 import type {TabsPaneContext} from "element-plus";
+import ProductListView from "../../components/Products/ProductListView.vue";
 
 const router = useRouter();
 const activeName = ref('0')

@@ -1,17 +1,19 @@
 <template>
-  <el-card shadow="always" class="product" @click="ClickCard()">
-    <img :src="props.product.backgd_url" alt=""/>
-    <div class="description">
-      <p class="title">{{ props.product.name }}</p>
-      <p class="more-info">{{ props.product.name }}</p>
-      <span class="price" v-if="!props.product.alreadyHave">价格：¥ {{ props.product.price / 100 }}</span>
-      <span class="have" v-else>已经购买</span>
+  <div class="wrapper">
+    <el-card shadow="always" class="product" @click="ClickCard()">
+      <img :src="props.product.backgd_url" alt=""/>
+      <div class="description">
+        <p class="title">{{ props.product.name }}</p>
+        <p class="more-info">{{ props.product.name }}</p>
+        <span class="price" v-if="!props.product.alreadyHave">价格：¥ {{ props.product.price / 100 }}</span>
+        <span class="have" v-else>已经购买</span>
+      </div>
+    </el-card>
+    <div class="tags">
+      <span>{{ 5 }}人测过</span>
+      <span>需要{{ 15 }}分钟</span>
+      <span>恋爱真难</span>
     </div>
-  </el-card>
-  <div class="tags">
-    <span>{{ 5 }}人测过</span>
-    <span>需要{{ 15 }}分钟</span>
-    <span>恋爱真难</span>
   </div>
 </template>
 
@@ -24,7 +26,7 @@ const login = loginState()
 
 const props = defineProps<{ product: Product }>();
 const ClickCard = async () => {
-  if (!login.isLoggedIn){
+  if (!login.isLoggedIn) {
     window.open("https://api.maiquer.tech/api/wechat/login")
     return
   }
@@ -60,6 +62,10 @@ const ClickCard = async () => {
 </script>
 
 <style lang="scss" scoped>
+.wrapper {
+  transition: all 0.5s ease;
+}
+
 .tags {
   & > span {
     font-size: 13px;

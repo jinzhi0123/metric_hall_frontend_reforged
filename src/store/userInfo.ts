@@ -27,7 +27,7 @@ export const userInfo = defineStore("userInfo", {
             });
             return success;
         },
-        async editnickName(username: string): Promise<void> {
+        async editNickname(username: string): Promise<void> {
             const login = loginState()
             await editUsername(username, login.userid, login.jwtToken)
             await this.fetchInfo(login.userid, login.jwtToken)
