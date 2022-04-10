@@ -16,9 +16,11 @@
       </p>
       <product-row-view/>
     </el-card>
+    <el-button @click="debug">调试</el-button>
     <el-empty description="咖啡店正在施工哦"/>
     <!--    todo: -->
   </div>
+
 </template>
 
 <script lang="ts" setup>
@@ -27,6 +29,10 @@ const urls = [
   "https://wowlavie-aws.hmgcdn.com/file/article_all/A1560997636.jpg",
   "https://okogreen.com.tw/sites/okogreen.com.tw/files/coffee-622495_1920%20%E6%8B%B7%E8%B2%9D.jpg",
 ];
+const debug = () => {
+  console.log(/MicroMessenger/i.test(window.navigator.userAgent))
+  // window.open(`https://m.maiquer.tech/oauth2?`)
+}
 </script>
 
 <style lang="scss" scoped>
@@ -34,7 +40,8 @@ const urls = [
   position: relative;
   border-radius: 20px 20px 0 0;
   top: -20px;
-  & p{
+
+  & p {
     font-size: 20px;
     font-family: "Microsoft YaHei";
   }

@@ -9,7 +9,12 @@
         </tr>
         <tr>
           <td>背景图</td>
-          <td><img width="105" :src="myinfo.backgd_url"></td>
+          <td>
+
+            <el-input type="file"></el-input>
+            <img width="105" :src="myinfo.backgd_url">
+
+          </td>
           <td> ›</td>
         </tr>
         <tr>
@@ -69,8 +74,8 @@ const editSign = async () => {
   sclicked.value = false
 }
 
-const uploadAvtr = (e:Event) => {
-  let file=e.target.files[0]
+const uploadAvtr = (e: Event) => {
+  // let file = e.target.files[0]
 }
 
 </script>

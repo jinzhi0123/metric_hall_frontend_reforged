@@ -42,7 +42,7 @@ const routes: Array<RouteRecordRaw> = [
         beforeEnter: () => {
             const login = loginState()
             if (!login.isLoggedIn) {
-                window.open("https://api.maiquer.tech/api/wechat/login")
+                location.href = "https://api.maiquer.tech/api/wechat/login"
                 return false
             }
         }
