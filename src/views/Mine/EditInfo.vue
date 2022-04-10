@@ -24,7 +24,17 @@
         <tr>
           <td>背景图</td>
           <td>
-            <img width="105" :src="myinfo.backgd_url">
+            <el-upload
+                class="avatar-uploader"
+                action="https://api.maiquer.tech/api/upload/image"
+                :show-file-list="false"
+                :on-success="handleBackSuccess"
+                name="imgFile"
+                :headers="token"
+                :before-upload="beforeAvatarUpload"
+            >
+              <img width="105" :src="myinfo.backgd_url">
+            </el-upload>
 
           </td>
           <td> ›</td>
@@ -98,21 +108,18 @@ const editSign = async () => {
 
 //上传文件逻辑
 const handleAvatarSuccess: UploadProps['onSuccess'] = async (
-    response,
-    uploadFile
+    response
 ) => {
   await info.editAvtr(response.data)
-  imageUrl.value = URL.createObjectURL(uploadFile.raw!)
+}
+
+const handleBackSuccess: UploadProps['onSuccess'] = async (
+    response,
+) => {
+  await info.editBack(response.data)
 }
 const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
   console.log(rawFile)
-  if (rawFile.type !== 'image/jpeg') {
-    ElMessage.error('Avatar picture must be JPG format!')
-    return false
-  } else if (rawFile.size / 1024 / 1024 > 2) {
-    ElMessage.error('Avatar picture size can not exceed 2MB!')
-    return false
-  }
   return true
 }
 

@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 import getInfo from "../apis/user/getInfo";
 import UserInfo from "../entity/userInfo";
-import {editAvatar, editSignature, editUsername} from "../apis/user/editInfo";
+import {editAvatar, editBackground, editSignature, editUsername} from "../apis/user/editInfo";
 import {loginState} from "./loginStatus";
 
 export const userInfo = defineStore("userInfo", {
@@ -40,6 +40,11 @@ export const userInfo = defineStore("userInfo", {
         async editAvtr(url: string): Promise<void> {
             const login = loginState()
             await editAvatar(url, login.userid, login.jwtToken)
+            await this.fetchInfo(login.userid, login.jwtToken)
+        },
+        async editBack(url: string): Promise<void> {
+            const login = loginState()
+            await editBackground(url, login.userid, login.jwtToken)
             await this.fetchInfo(login.userid, login.jwtToken)
         }
     },

@@ -33,3 +33,13 @@ export async function editAvatar(url: string, userId: number, jwt: string): Prom
         method: "PUT"
     })
 }
+
+export async function editBackground(url: string, userId: number, jwt: string): Promise<void> {
+    await axios({
+        url: `https://api.maiquer.tech/api/user/updateBackImg?userId=${userId}&backImg=${url}`,
+        headers: {
+            Authorization: jwt
+        },
+        method: "PUT"
+    })
+}
