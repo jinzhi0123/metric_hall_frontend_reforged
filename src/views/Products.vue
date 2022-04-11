@@ -127,6 +127,7 @@ const login = () => {
 
   & img {
     border-radius: 50%;
+    object-fit: cover;
   }
 
   p {

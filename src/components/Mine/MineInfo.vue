@@ -80,6 +80,7 @@ const logout = () => {
     margin-top: -50%;
     //transform: translateY(-50%);
     overflow: visible;
+    object-fit: cover;
   }
 
   & .el-button {
