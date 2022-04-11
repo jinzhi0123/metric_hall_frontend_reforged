@@ -11,7 +11,7 @@
     <el-tab-pane label="社会" name="3"></el-tab-pane>
   </el-tabs>
   <el-scrollbar height="420px">
-    <product-list-view :listing="listing" />
+    <product-list-view :listing="listing" :show-like="true"/>
   </el-scrollbar>
 </template>
 

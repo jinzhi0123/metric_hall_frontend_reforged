@@ -7,6 +7,7 @@ type Product = {
     backgd_url: string;
     target_url: string;
     alreadyHave?: boolean;
+    isLiked?:boolean;
     type: number;
 };
 

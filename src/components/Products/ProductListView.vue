@@ -1,9 +1,9 @@
 <template>
-  <transition-group name="list" mode="in-out">
-    <div v-for="i in props.listing" >
-      <product-card :product="i"></product-card>
-    </div>
-  </transition-group>
+  <!--  <transition-group name="list" mode="in-out">-->
+  <div v-for="i in props.listing">
+    <product-card :product="i" :showLike="props.showLike"></product-card>
+  </div>
+  <!--  </transition-group>-->
 </template>
 
 <script lang="ts" setup>
@@ -12,7 +12,7 @@ import {PropType} from "vue";
 
 const props = defineProps({
   listing: {type: Array as PropType<Product[]>},
-  type: Number
+  showLike: Boolean
 })
 </script>
 
