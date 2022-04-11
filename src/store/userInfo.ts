@@ -3,6 +3,8 @@ import getInfo from "../apis/user/getInfo";
 import UserInfo from "../entity/userInfo";
 import {editAvatar, editBackground, editSignature, editUsername} from "../apis/user/editInfo";
 import {loginState} from "./loginStatus";
+import Order from "../entity/order";
+import getOrders from "../apis/user/queryOrders";
 
 export const userInfo = defineStore("userInfo", {
     state: () => {
@@ -16,7 +18,10 @@ export const userInfo = defineStore("userInfo", {
                 phone: "00000",
                 signiture: ""
             } as UserInfo,
-        };
+            Order: [] as Order[]
+        }
+
+            ;
     },
     actions: {
         async fetchInfo(userid: number, jwt: string): Promise<boolean> {
@@ -46,6 +51,15 @@ export const userInfo = defineStore("userInfo", {
             const login = loginState()
             await editBackground(url, login.userid, login.jwtToken)
             await this.fetchInfo(login.userid, login.jwtToken)
+        },
+        async getOrder(): Promise<void> {
+            const login = loginState()
+            await getOrders(login.userid, login.jwtToken).then(
+                res => {
+                    this.Order = res
+                    console.log(this.Order)
+                }
+            )
         }
     },
 });

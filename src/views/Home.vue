@@ -16,7 +16,7 @@
       </p>
       <product-row-view/>
     </el-card>
-    <el-button @click="debug">调试</el-button>
+<!--    <el-button @click="debug">调试</el-button>-->
     <el-empty description="咖啡店正在施工哦"/>
     <!--    todo: -->
   </div>

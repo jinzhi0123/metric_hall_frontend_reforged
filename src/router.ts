@@ -61,7 +61,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("./views/Mine/MyFavourite.vue"),
     }, {
         path: "/order",
-        component: () => import("./views/Mine/MyPayments.vue")
+        component: () => import("./views/Mine/MyOrders.vue")
     }, {
         path: "/diary",
         component: () => import("./views/Mine/MyDiary.vue")
