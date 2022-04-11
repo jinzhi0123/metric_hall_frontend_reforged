@@ -2,7 +2,7 @@
   <div>
     <el-card class="edit">
       <table class="info">
-        <tr>
+        <tr v-loading="loading">
           <td>头像</td>
           <!--          <td><img width="65" :src="myinfo.avtr_url" @click="uploadAvtr"></td>-->
           <td>
@@ -15,7 +15,7 @@
                 :headers="token"
                 :before-upload="beforeAvatarUpload"
             >
-              <img width=65 v-if="imageUrl" :src="imageUrl" class="avatar"/>
+              <img width=65 v-if="info.avtr_url" :src="info.avtr_url" class="avatar"/>
             </el-upload>
           </td>
 
@@ -91,8 +91,7 @@ const isEditingName = ref(false)
 const isEditingSign = ref(false)
 const name = ref(UserInfo.userInfo.name)
 const sign = ref(UserInfo.userInfo.signiture)
-const imageUrl = ref(UserInfo.userInfo.avtr_url)
-
+const loading = ref(false)
 // 修改用户基本信息
 const editName = async () => {
   await UserInfo.editNickname(name.value)
@@ -105,13 +104,16 @@ const editSign = async () => {
 
 //上传文件逻辑
 const handleAvatarSuccess: UploadProps['onSuccess'] = async response => {
+  loading.value = false
   await UserInfo.editAvtr(response.data)
 }
 
 const handleBackSuccess: UploadProps['onSuccess'] = async response => {
+  loading.value = false
   await UserInfo.editBack(response.data)
 }
 const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
+  loading.value = true
   return true
 }
 

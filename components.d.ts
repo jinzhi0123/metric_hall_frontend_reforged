@@ -19,6 +19,7 @@ declare module 'vue' {
     Footer: typeof import('./src/components/Base/Footer.vue')['default']
     Header: typeof import('./src/components/Home/Header.vue')['default']
     Info: typeof import('./src/components/Home/Info.vue')['default']
+    Loading: typeof import('element-plus/es')['ElLoadingDirective']
     MineCard: typeof import('./src/components/Mine/MineCard.vue')['default']
     MineInfo: typeof import('./src/components/Mine/MineInfo.vue')['default']
     ProductCard: typeof import('./src/components/Card/ProductCard.vue')['default']
