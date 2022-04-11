@@ -47,12 +47,14 @@ export const loginState = defineStore("login", {
             });
             return res;
         },
-        async doSmsBind(phone: string, code: string): Promise<boolean> {
+        async doSmsBind(phone: string, code: string): Promise<{ success: boolean, message: string }> {
             let success = false;
+            let message = ""
             await smsAuth(this.userid, phone, code).then((flag) => {
-                success = flag
+                success = flag.success
+                message = flag.message
             });
-            return success;
+            return {success, message};
         },
         save2Local() {
             localStorage.clear();

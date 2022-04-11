@@ -1,5 +1,16 @@
 <template>
-  <div v-if="success">
+  <div v-if="message!==''">
+    <el-result
+        icon="error"
+        title="出错了"
+        :sub-title="message"
+    >
+      <template #extra>
+        <el-button type="primary" @click="retry">重试</el-button>
+      </template>
+    </el-result>
+  </div>
+  <div v-else-if="success">
     <el-result
         icon="success"
         title="绑定成功"
@@ -7,6 +18,7 @@
     >
     </el-result>
   </div>
+
   <el-card v-else>
     <div class="form">
 
@@ -44,14 +56,23 @@ const getCode = async () => {
   }, 1000)
 }
 
+const retry = () => {
+  message.value = ""
+  success.value = false
+}
+
 const bind = async () => {
   await login.doSmsBind(phone.value, code.value).then(
       r => {
-        if (r) {
-          success.value = r
+        if (r.success) {
+          success.value = r.success
           setTimeout(() => {
             location.href = "/editinfo"
           }, 300)
+        } else {
+          success.value = false
+          message.value = r.message
+          console.log(message.value)
         }
       }
   )
