@@ -57,7 +57,7 @@
         </tr>
         <tr>
           <td>绑定手机号</td>
-          <td>{{ info.phone ? info.phone : "未绑定" }}</td>
+          <td @click="pushSmsAuth">{{ info.phone ? info.phone : "未绑定" }}</td>
           <td> ›</td>
         </tr>
         <tr>
@@ -86,6 +86,9 @@ const info = computed(() => {
 const token = computed(() => {
   return {Authorization: login.jwtToken}
 })
+const pushSmsAuth = ()=>{
+  location.href = "/bindphone"
+}
 //初始化页面逻辑要用到的信息
 const isEditingName = ref(false)
 const isEditingSign = ref(false)

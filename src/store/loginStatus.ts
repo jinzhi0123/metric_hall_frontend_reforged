@@ -47,15 +47,10 @@ export const loginState = defineStore("login", {
             });
             return res;
         },
-        async doSmsLogin(phone: string, code: string): Promise<boolean> {
+        async doSmsBind(phone: string, code: string): Promise<boolean> {
             let success = false;
-            await smsAuth(phone, code).then((jwt) => {
-                success = true;
-                this.jwtToken = jwt;
-                const data = jwt.slice(jwt.indexOf(".") + 1, jwt.lastIndexOf("."));
-                const id = eval(`(${atob(data)})`);
-                this.userid = id.jti;
-                this.isLoggedIn = true;
+            await smsAuth(this.userid, phone, code).then((flag) => {
+                success = flag
             });
             return success;
         },

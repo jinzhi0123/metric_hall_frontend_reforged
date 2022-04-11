@@ -71,6 +71,9 @@ const routes: Array<RouteRecordRaw> = [
     }, {
         path: "/redir",
         component: () => import("./views/Login/redir.vue")
+    }, {
+        path: "/bindPhone",
+        component: () => import("./views/Login/bindPhone.vue")
     }
 ];
 
