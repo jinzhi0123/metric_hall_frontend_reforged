@@ -4,7 +4,7 @@
         v-for="item of urls"
         :key="item"
         class="iconc"
-        :style="{ backgroundImage: `url(${item})` }"
+        :style="{ backgroundImage: `url(${item})`}"
     >
     </el-carousel-item>
   </el-carousel>
@@ -58,7 +58,10 @@ const debug = () => {
   background-position: center;
 
 }
-
+.el-carousel__item{
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .todo {
   //   border: 1px solid #949494;
   width: 200px;
