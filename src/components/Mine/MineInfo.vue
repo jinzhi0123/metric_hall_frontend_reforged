@@ -2,7 +2,7 @@
   <div>
     <div class="back"></div>
     <el-card class="main-card">
-      <img width="100" :src="info.avtr_url" alt="头像"/>
+      <img width="100" height="100" :src="info.avtr_url" alt="头像"/>
       <el-button @click="editInfo">编辑信息</el-button>
       <el-button @click="logout">登出</el-button>
       <h4>{{ info.name }}</h4>

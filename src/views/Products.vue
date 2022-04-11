@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <el-card class="main-card" @click="login">
-      <img width="50" :src="info().avtr_url" alt="头像">
+      <img width="50" height="50" :src="info().avtr_url" alt="头像">
       <div class="info">
         <h4>{{ info().name }}</h4>
         <div>测试中，出报告，订阅过期</div>
