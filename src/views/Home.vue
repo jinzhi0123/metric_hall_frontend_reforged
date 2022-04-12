@@ -10,7 +10,7 @@
   </el-carousel>
   <div class="home">
     <el-card class="intro">
-      <h1>嘿！这里是麦趣咖啡馆</h1>
+      <h2>嘿！这里是麦趣心理咖啡厅</h2>
       <p>
         热门推荐
       </p>
@@ -29,10 +29,6 @@ const urls = [
   "https://wowlavie-aws.hmgcdn.com/file/article_all/A1560997636.jpg",
   "https://okogreen.com.tw/sites/okogreen.com.tw/files/coffee-622495_1920%20%E6%8B%B7%E8%B2%9D.jpg",
 ];
-const debug = () => {
-  console.log(/MicroMessenger/i.test(window.navigator.userAgent))
-  // window.open(`https://m.maiquer.tech/oauth2?`)
-}
 </script>
 
 <style lang="scss" scoped>
