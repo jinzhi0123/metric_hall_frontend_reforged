@@ -248,9 +248,8 @@
       </svg>
       <h2>你还没有收藏哦</h2>
     </div>
-    <div>
+    <div v-else>
       <el-card class="content">
-
         <product-list-view :listing="favListing"/>
       </el-card>
     </div>
