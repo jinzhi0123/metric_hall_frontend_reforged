@@ -1,5 +1,11 @@
 import axios from "axios";
 
+/**
+ *
+ * @param code
+ * @param state
+ */
+
 export default async function wxauth(
   code: string,
   state: string

@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts" setup>
-import {onMounted, ref} from "vue";
+import {ref} from "vue";
 import type {TabsPaneContext} from "element-plus";
 import {useRouter} from "vue-router";
 import {userInfo} from "../store/userInfo";

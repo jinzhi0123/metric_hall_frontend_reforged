@@ -1,5 +1,12 @@
 import axios from "axios";
 
+/**
+ @why lalala
+ @description 登录接口
+ @param username 用户名
+ @param password 密码
+ @return {jwt,userid} 返回jwt和用户ID
+**/
 export default async function login(
     username: string,
     password: string

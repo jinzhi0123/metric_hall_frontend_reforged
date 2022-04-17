@@ -1,5 +1,9 @@
 import axios from "axios";
 
+/**
+ * @description 啦啦啦
+ * @param phone 手机号
+ **/
 export async function smsSend(phone: string): Promise<boolean> {
     let res = false;
     await axios

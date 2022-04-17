@@ -1,6 +1,9 @@
 <template>
-  <transition-group enter-active-class="animate__animated animate__bounceInUp" appear appear-active-class="animate__animated animate__bounceInUp">
-    <div v-for="i in props.listing">
+  <transition-group enter-active-class="animate__animated animate__bounceInUp" appear
+                    appear-active-class="animate__animated animate__bounceInUp"
+                     mode="out-in">
+
+    <div v-for="i of props.listing " :key="i.index">
       <product-card :product="i" :showLike="props.showLike"></product-card>
     </div>
   </transition-group>
@@ -16,7 +19,7 @@ const props = defineProps({
 })
 </script>
 
-<style>
+<style lang="scss">
 /*.list-enter-active, .list-leave-active {*/
 /*  transition: all 0.5s;*/
 /*}*/

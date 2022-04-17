@@ -3,7 +3,10 @@ import qs from "qs";
 import axios from "axios";
 
 const login = loginState()
-
+/*
+@param id 产品ID
+@return 什么都不返回
+*/
 const addProduct = async (id: number) => {
     let success = false;
     await axios({
