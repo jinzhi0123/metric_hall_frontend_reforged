@@ -10,7 +10,7 @@
     <el-tab-pane label="群体" name="2"></el-tab-pane>
     <el-tab-pane label="社会" name="3"></el-tab-pane>
   </el-tabs>
-  <el-scrollbar height="420px">
+  <el-scrollbar :height="heightW">
     <product-list-view :listing="listing" :show-like="true"/>
   </el-scrollbar>
 </template>
@@ -38,4 +38,9 @@ const listing = computed(() => {
     return i.type == typeIndex.value || typeIndex.value == 0
   });
 });
+
+const heightW = computed(() => {
+  return `${window.innerHeight * 0.65}px`
+})
+
 </script>

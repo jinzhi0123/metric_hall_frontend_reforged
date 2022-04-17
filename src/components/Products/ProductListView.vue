@@ -1,9 +1,9 @@
 <template>
-  <!--  <transition-group name="list" mode="in-out">-->
-  <div v-for="i in props.listing">
-    <product-card :product="i" :showLike="props.showLike"></product-card>
-  </div>
-  <!--  </transition-group>-->
+  <transition-group enter-active-class="animate__animated animate__bounceInUp" appear appear-active-class="animate__animated animate__bounceInUp">
+    <div v-for="i in props.listing">
+      <product-card :product="i" :showLike="props.showLike"></product-card>
+    </div>
+  </transition-group>
 </template>
 
 <script lang="ts" setup>
