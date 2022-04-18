@@ -11,7 +11,7 @@
     <el-tab-pane label="社会" name="3"></el-tab-pane>
   </el-tabs>
   <el-scrollbar :height="heightW">
-    <product-list-view :listing="listing" :show-like="true"/>
+    <product-list-view :listing="listing()" :show-like="true"/>
   </el-scrollbar>
 </template>
 
@@ -33,14 +33,16 @@ const handleClick = (tab: TabsPaneContext) => {
   typeIndex.value = Number(tab.paneName)
 };
 
-const listing = computed(() => {
-  return all_products.productLs.filter(i => {
+const listing = () => {
+  let a = new Array<Product>()
+  Object.assign(a, all_products.productLs.filter(i => {
     return i.type == typeIndex.value || typeIndex.value == 0
-  });
-});
+  }))
+  return a;
+};
 
 const heightW = computed(() => {
-  return `${window.innerHeight * 0.65}px`
+  return `${window.innerHeight * 0.68}px`
 })
 
 </script>

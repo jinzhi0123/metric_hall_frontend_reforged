@@ -139,8 +139,9 @@ const unlike = async () => {
   //background: #eceeee;
 
   & img {
-    width: 100px !important;
-    height: 100%;
+    margin: 10px;
+    width: 80px !important;
+    height: 80px;
     position: relative;
   }
 }
