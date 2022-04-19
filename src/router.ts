@@ -75,7 +75,7 @@ const routes: Array<RouteRecordRaw> = [
         path: "/bindPhone",
         component: () => import("./views/Login/bindPhone.vue")
     }, {
-        path: "/detail",
+        path: "/detail/:id",
         name:'detail',
         component: () => import("./views/detail.vue")
     }
