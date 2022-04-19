@@ -43,6 +43,10 @@ import buyProduct from "../../apis/products/buyProduct";
 import {loginState} from "../../store/loginStatus";
 import addProduct from "../../apis/products/addProduct";
 import {ProductStore} from "../../store/products";
+import {useRouter} from 'vue-router';
+
+
+const router = useRouter()
 
 const login = loginState()
 
@@ -53,7 +57,13 @@ const ClickCard = async () => {
     return
   }
   if (props.product.alreadyHave) {
-    window.open(props.product.target_url)
+    // window.open(props.product.target_url)
+    router.push({
+      name:'detail',
+      params: {
+        id:props.product.index
+      }
+    })
   } else {
     await buyProduct(String(props.product.index), login.userid).then((res) => {
       WeixinJSBridge.invoke(

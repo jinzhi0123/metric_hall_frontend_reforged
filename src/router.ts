@@ -1,5 +1,5 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
-import {loginState} from "./store/loginStatus";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { loginState } from "./store/loginStatus";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -74,6 +74,10 @@ const routes: Array<RouteRecordRaw> = [
     }, {
         path: "/bindPhone",
         component: () => import("./views/Login/bindPhone.vue")
+    }, {
+        path: "/detail",
+        name:'detail',
+        component: () => import("./views/detail.vue")
     }
 ];
 
